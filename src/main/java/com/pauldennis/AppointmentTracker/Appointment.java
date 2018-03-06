@@ -1,8 +1,7 @@
 package com.pauldennis.AppointmentTracker;
 
 public class Appointment {
-	
-	private Integer id;
+
 	private String date;
 	private String time;
 	private String description;
@@ -14,12 +13,12 @@ public class Appointment {
 	}
 	
 	
-	public Integer getId() {
-		return id;
+	
+	@Override
+	public String toString() {
+		return "Appointment [date=" + date + ", time=" + time + ", description=" + description + "]";
 	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
+
 	public String getDate() {
 		return date;
 	}

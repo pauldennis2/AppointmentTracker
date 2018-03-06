@@ -14,15 +14,17 @@ import org.h2.tools.Server;
 
 public class AppointmentDatabase {
 	
-	public final static String DB_URL = "jdbc:h2:file:~/test";
+	public final static String DB_URL = //"jdbc:h2:file:~/test";
+	
+	"jdbc:h2:./main";
 	
 	private Connection conn;
 	
 	public void init() throws SQLException {
         Server.createWebServer().start();
-        conn = DriverManager.getConnection(DB_URL);
+        conn = DriverManager.getConnection(DB_URL, "sa", "");
         Statement stmt = conn.createStatement();
-        stmt.execute("CREATE TABLE IF NOT EXISTS appointments (id IDENTITY, date VARCHAR, time VARCHAR, description VARCHAR)");
+        stmt.execute("CREATE TABLE IF NOT EXISTS appointments (date VARCHAR, time VARCHAR, description VARCHAR)");
     }
 	
 	public void addAppointment(Appointment appointment) throws SQLException {
@@ -47,6 +49,7 @@ public class AppointmentDatabase {
 	}
 	
 	public List<Appointment> getAppointmentsByName (String name) throws SQLException {
+		System.out.println("Searching for appointments with name/description of: " + name);
 		return getAllAppointments().stream()
 			.filter(appointment -> appointment.getDescription().contains(name))
 			.collect(Collectors.toList());
