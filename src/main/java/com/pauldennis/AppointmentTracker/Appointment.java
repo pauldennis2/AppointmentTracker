@@ -1,27 +1,33 @@
 package com.pauldennis.AppointmentTracker;
 
-import java.time.LocalDateTime;
-
 public class Appointment {
 	
-	private LocalDateTime dateTime;
-	private String text;
+	private String date;
+	private String time;
+	private String description;
 	
-	public Appointment(LocalDateTime dateTime, String text) {
-		this.dateTime = dateTime;
-		this.text = text;
+	public Appointment(String date, String time, String text) {
+		this.date = date;
+		this.time = time;
+		this.description = text;
 	}
 	
-	public LocalDateTime getDateTime() {
-		return dateTime;
+	public String getDate() {
+		return date;
 	}
-	public void setDateTime(LocalDateTime dateTime) {
-		this.dateTime = dateTime;
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
 	}
 	public String getText() {
-		return text;
+		return description;
 	}
 	public void setText(String text) {
-		this.text = text;
+		this.description = text;
 	}
 }
