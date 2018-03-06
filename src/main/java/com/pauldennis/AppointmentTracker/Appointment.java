@@ -2,6 +2,7 @@ package com.pauldennis.AppointmentTracker;
 
 public class Appointment {
 	
+	private Integer id;
 	private String date;
 	private String time;
 	private String description;
@@ -12,6 +13,13 @@ public class Appointment {
 		this.description = text;
 	}
 	
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public String getDate() {
 		return date;
 	}
@@ -24,10 +32,15 @@ public class Appointment {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	public String getText() {
+
+	public String getDescription() {
 		return description;
 	}
-	public void setText(String text) {
-		this.description = text;
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
+	
+	
+
 }
