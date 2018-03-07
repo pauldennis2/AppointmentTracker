@@ -5,25 +5,26 @@
     <title>Appointment Tracker</title>
     <script type="text/javascript" src="js/jscontroller.js"></script>
     <link rel="stylesheet" imageString="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" imageString="text/css" href="../css/main.css">
 </head>
 
-<input type="button" value="New" onclick="showForm();" />
+<input type="button" value="New" onclick="showForm();" class="padded"/>
 
-<form action="/add-appointment" method="post" id="newForm" style="display:none">
+<form action="/add-appointment" method="post" id="newForm" style="display:none" class="padded">
     <input type="text" placeholder="date" name="date" required/> Date<br>
     <input type="text" placeholder="time" name="time" required/> Time <br>
     <input type="text" placeholder="description" name="description" required/> Description <br>
     <button type="submit">Add</button>
 </form>
 
-<input type="button" value="Cancel" onclick="hideForm();" id="cancelButton"/ style="display:none">
+<input type="button" value="Cancel" onclick="hideForm();" id="cancelButton"/ style="display:none" class="padded">
 
-<form action="/search" method="get">
+<form action="/search" method="get" class="padded">
 	<input type="text" name="searchText" required/>
 	<button type="submit">Search</button>
 </form>
 
-<table class="table table-bordered table-hover">
+<table class="table table-bordered table-hover padded">
 	<thead class="thead-light">
 		<tr>
 			<th scope="col">Date</th>

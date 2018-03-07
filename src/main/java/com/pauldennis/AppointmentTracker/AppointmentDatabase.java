@@ -14,14 +14,13 @@ import org.h2.tools.Server;
 
 public class AppointmentDatabase {
 	
-	public final static String DB_URL = //"jdbc:h2:file:~/test";
-	
-	"jdbc:h2:./main";
+	public final static String DB_URL = "jdbc:h2:./main";
 	
 	private Connection conn;
 	
 	public void init() throws SQLException {
         Server.createWebServer().start();
+        //DB username is "sa", password blank
         conn = DriverManager.getConnection(DB_URL, "sa", "");
         Statement stmt = conn.createStatement();
         stmt.execute("CREATE TABLE IF NOT EXISTS appointments (date VARCHAR, time VARCHAR, description VARCHAR)");
@@ -54,5 +53,25 @@ public class AppointmentDatabase {
 		return getAllAppointments().stream()
 			.filter(appointment -> appointment.getDescription().contains(name))
 			.collect(Collectors.toList());
+	}
+	
+	//This method will remove all appointments that CONTAIN the given name
+	//I.e. same as "search" functionality
+	public void removeAppointmentsByName (String name) throws SQLException {
+		List<Appointment> appointmentsForDeletion = getAppointmentsByName(name);
+		
+		System.out.println("In removeAppointmentsByName(). Found:");
+		appointmentsForDeletion.forEach(System.out::println);
+		
+		//Pretty inefficient to do multiple queries
+		appointmentsForDeletion.forEach(appointment -> {
+			try {
+				PreparedStatement stmt = conn.prepareStatement("DELETE FROM appointments WHERE description = ?");
+				stmt.setString(1, appointment.getDescription());
+				stmt.execute();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		});
 	}
 }

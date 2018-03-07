@@ -2,6 +2,7 @@ package com.pauldennis.AppointmentTracker;
 
 public class Appointment {
 
+	//In "version 2" we'd want to change this to use a LocalDateTime or something
 	private String date;
 	private String time;
 	private String description;
@@ -11,8 +12,6 @@ public class Appointment {
 		this.time = time;
 		this.description = text;
 	}
-	
-	
 	
 	@Override
 	public String toString() {

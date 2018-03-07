@@ -21,14 +21,11 @@ public class AppointmentTrackerController {
 		}
 		List<Appointment> appointments = appointmentDatabase.getAllAppointments();
 		model.addAttribute("appointments", appointments);
-		
-		System.out.println("At the home endpoint");
 		return "home";
 	}
 	
 	@RequestMapping (path = "/add-appointment", method = RequestMethod.POST)
 	public String addAppointment (String date, String time, String description) throws SQLException {
-		
 		if (appointmentDatabase == null) {
 			appointmentDatabase = new AppointmentDatabase();
 			appointmentDatabase.init();
