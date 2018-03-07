@@ -50,6 +50,7 @@ public class AppointmentDatabase {
 	
 	public List<Appointment> getAppointmentsByName (String name) throws SQLException {
 		System.out.println("Searching for appointments with name/description of: " + name);
+		//Whee! Java 8 streams
 		return getAllAppointments().stream()
 			.filter(appointment -> appointment.getDescription().contains(name))
 			.collect(Collectors.toList());

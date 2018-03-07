@@ -1,36 +1,45 @@
 <html>
 <body>
-
 <head>
     <meta charset="UTF-8">
     <title>Appointment Tracker</title>
-    <script type="text/javascript" src="js/lobby.js"></script>
+    <script type="text/javascript" src="js/jscontroller.js"></script>
     <link rel="stylesheet" imageString="text/css" href="../css/bootstrap.min.css">
 </head>
-<form action="/add-appointment" method="post">
-    <input type="text" placeholder="date" name="date" required/>
-    <input type="text" placeholder="time" name="time" required/>
-    <input type="text" placeholder="description" name="description" required/>
+
+<input type="button" value="New" onclick="showForm();" />
+
+<form action="/add-appointment" method="post" id="newForm" style="display:none">
+    <input type="text" placeholder="date" name="date" required/> Date<br>
+    <input type="text" placeholder="time" name="time" required/> Time <br>
+    <input type="text" placeholder="description" name="description" required/> Description <br>
     <button type="submit">Add</button>
 </form>
+
+<input type="button" value="Cancel" onclick="hideForm();" id="cancelButton"/ style="display:none">
+
 <form action="/search" method="get">
 	<input type="text" name="searchText" required/>
 	<button type="submit">Search</button>
 </form>
 
-<table class="table">
-	<tr>
-		<th>Date</th>
-		<th>Time</th>
-		<th>Description</th>
-	</tr>
-	{{#appointments}}
-	<tr>
-		<th>{{date}}</th>
-		<th>{{time}}</th>
-		<th>{{Description}}</th>
-	</tr>
-	{{/appointments}}
+<table class="table table-bordered table-hover">
+	<thead class="thead-light">
+		<tr>
+			<th scope="col">Date</th>
+			<th scope="col">Time</th>
+			<th scope="col">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#appointments}}
+			<tr>
+				<th scope="row">{{date}}</th>
+				<th>{{time}}</th>
+				<th>{{Description}}</th>
+			</tr>
+		{{/appointments}}
+	</tbody>
 </table>
 </body>
 </html>
